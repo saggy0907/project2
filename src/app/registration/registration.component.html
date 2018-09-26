@@ -1,0 +1,115 @@
+<div class="container">
+  <div id="padd" class="row main">
+    <div class="main-login main-center">
+      <form #regForm="ngForm" class="" method="post" action="#" autocomplete="on" (ngSubmit)="registerUser()">
+
+        <h2 ><u>Sign up once...</u></h2>
+        <div class="form-group">
+          <label for="name" class="cols-sm-2 control-label">Your Name</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+              <input [(ngModel)]="registerData.name" minlength="4" #name=ngModel type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" required/>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="name.invalid && name.touched" class="alert alert-danger">
+          <div *ngIf="name.errors.required">
+            Name is required.
+          </div>
+          <div *ngIf="name.errors.minlength">
+            Name must be at least 4 characters long.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="cols-sm-2 control-label" autocomplete="off">Your Email</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input [(ngModel)]="registerData.email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" required/>
+            </div>
+          </div>
+        </div>
+        <div [hidden]="email.valid || (email.pristine && !email.touched ) " class="alert alert-danger">
+          Email is required and format should be <i><u>abcd@xyz.com</u></i>.
+        </div>
+        <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+            <div *ngIf = "email.errors?.required">
+                Email field can't be blank
+            </div>
+            <div *ngIf = "email.errors?.pattern && email.touched">
+                The email id doesn't seem right
+            </div>
+         </div> -->
+         <div class="form-group">
+           <label for="username" class="cols-sm-2 control-label">Role</label>
+           <div class="cols-sm-10">
+             <div class="input-group">
+               <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+               <input [(ngModel)]="registerData.role" minlength="5" #role="ngModel" type="text" class="form-control" name="username" id="username" placeholder="Enter your role" required/>
+             </div>
+           </div>
+         </div>
+
+
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">Username</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+              <input [(ngModel)]="registerData.username" minlength="5" #username="ngModel" type="text" class="form-control" name="username" id="" placeholder="Enter your Username" required/>
+            </div>
+          </div>
+
+          <div [hidden]="username.valid || (username.pristine && !regForm.submitted)" class="alert alert-danger" style="margin-top:15px; font-size:0.8rem">
+            Username is required (minimum 5 characters).
+          </div>
+          <!-- <pre *ngIf="username.errors">{{ username.errors | json }}</pre> -->
+
+        </div>
+        <div ngModelGroup="password" #userPassword="ngModelGroup">
+          <div class="form-group">
+            <label for="password" class="cols-sm-2 control-label">Password</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                <input [(ngModel)]="registerData.password"  ngModel  name="password" minlength="6" type="password"
+                class="form-control"  id="password" placeholder="Enter your Password" />
+              </div>
+            </div>
+          </div>
+          <div *ngIf="(userPassword.invalid?.password) && (userPassword.touched.password)" class="alert alert-danger">
+            Password needs to be more than 6 characters
+          </div>
+
+          <div class="form-group">
+            <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                <input [(ngModel)]="registerData.confirm" required validateEqual="password"  minlength="6" ngModel
+                name="confirm" type="password" class="form-control"  id="confirm" placeholder="Confirm your Password" />
+              </div>
+            </div>
+          </div>
+          <div *ngIf="(userPassword.invalid|| (userPassword.value?.password) !=( userPassword.value?.confirm))
+           && (userPassword.touched)" class="alert alert-danger">
+
+             <div *ngIf = "userPassword.invalid; else nomatch">
+                 Password needs to be more than 6 characters
+             </div>
+                 <ng-template #nomatch >
+                     Passwords don't match
+                 </ng-template>
+             </div>
+         </div>
+
+
+        <div class="form-group ">
+          <button [disabled]="!regForm.form.valid" type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
