@@ -11,7 +11,7 @@ export class AppComponent {
 
   user={};
   // public logUser:LoginComponent;
-  constructor(private _authService:RegistrationService, public _router:Router,public loged:LoginComponent){}
+  constructor(public _authService:RegistrationService, public _router:Router,public loged:LoginComponent){}
 
   // private user = this.logUser.user;
 //   OnInit(){

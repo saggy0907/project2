@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginData = {} ;
 
  public user=this.loginData;
-  constructor(private _auth:RegistrationService , public router:Router) {
+  constructor(public _auth:RegistrationService , public router:Router) {
 }
 
   loginUser(){

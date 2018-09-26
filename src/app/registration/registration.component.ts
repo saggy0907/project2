@@ -12,7 +12,7 @@ export class RegistrationComponent implements OnInit {
   // [x: string]: any;
   private registerData ={ };
 
-  constructor(private _auth: RegistrationService, private _router:Router) { }
+  constructor(public _auth: RegistrationService, private _router:Router) { }
 
   ngOnInit() {
   }
