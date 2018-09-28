@@ -9,7 +9,7 @@ import { RegistrationService } from '../registration.service';
 })
 export class LoginComponent implements OnInit {
   ngOnInit(){ }
-  loginData = {} ;
+  public loginData = <any>{} ;
 
  public user=this.loginData;
   constructor(public _auth:RegistrationService , public router:Router) {

@@ -115,7 +115,7 @@ export const routes: Routes = [
     canActivate:[AuthGuard]
   },
   {
-    path:'accountant/genrate_payslip',
+    path:'accountant/generate_payslip',
     component:PayslipComponent
   },
   {

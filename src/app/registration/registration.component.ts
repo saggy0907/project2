@@ -10,7 +10,7 @@ export class RegistrationComponent implements OnInit {
 
   // getUserName: any;
   // [x: string]: any;
-  private registerData ={ };
+  public registerData =<any>{ };
 
   constructor(public _auth: RegistrationService, private _router:Router) { }
 

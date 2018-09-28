@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 @Injectable()
 export class RegistrationService {
 
-  registerUrl = 'http://localhost:9080/user/registration';
-  loginUrl = 'http://localhost:9080/user/login';
+  registerUrl = 'http://sagar-practice.us.openode.io/user/registration';
+  loginUrl = 'http://sagar-practice.us.openode.io/user/login';
   constructor(private http: HttpClient, public _router: Router) { }
   registerUser(user) {
     const role1 = user.role;
