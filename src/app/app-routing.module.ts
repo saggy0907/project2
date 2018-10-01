@@ -19,6 +19,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { PayslipComponent } from './payslip/payslip.component';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { LibraryComponent } from './library/library.component';
+import { Auth2Guard } from './auth2.guard';
 
 
 export const routes: Routes = [
@@ -29,27 +30,39 @@ export const routes: Routes = [
   },
   {
     path:'accountant/students',
-    component:StudentsComponent
+    component:StudentsComponent,
+    canActivate:[AuthGuard],
+    data:{role:['accountant']}
   },
   {
     path:'faculty/students',
-    component:StudentsComponent
+    component:StudentsComponent,
+    canActivate:[AuthGuard],
+    data:{role:['faculty']}
   },
   {
     path:'principal/students',
-    component:StudentsComponent
+    component:StudentsComponent,
+    canActivate:[AuthGuard],
+    data:{role:['principal']}
   },
   {
     path:'hod/students',
-    component:StudentsComponent
+    component:StudentsComponent,
+    canActivate:[AuthGuard],
+    data:{role:['hod']}
   },
   {
     path:'admin/students',
-    component:StudentsComponent
+    component:StudentsComponent,
+    canActivate:[AuthGuard],
+    data:{role:['admin']}
   },
   {
-    path:'registration',
-    component:RegistrationComponent
+    path:'admin/add_user',
+    component:RegistrationComponent,
+    canActivate:[AuthGuard],
+    data:{role:['admin']}
   },
   {
     path:'login',
@@ -58,94 +71,136 @@ export const routes: Routes = [
   {
     path:'admin/hod',
     component:HodComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['admin']}
   },
   {
     path:'principal/hod',
     component:HodComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['principal']}
   },
   {
     path:'admin/faculty',
     component:FacultyComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['admin']}
+
   },
   {
     path:'principal/faculty',
     component:FacultyComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['principal']}
   },
   {
     path:'hod/faculty',
     component:FacultyComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['hod']}
   },
   {
     path:'accountant/faculty',
     component:FacultyComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['accountant']}
   },
   {
     path:'accountant/create_invoice',
-    component:InvoiceComponent
+    component:InvoiceComponent,
+    canActivate:[AuthGuard],
+    data:{role:['accountant']}
   },
   {
     path:'admin/student_fee',
     component:StudentFeeComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['admin']}
   },
   {
     path:'admin/student_performance',
     component:StudentPerformanceComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['admin']}
   },
   {
     path:'principal/student_performance',
     component:StudentPerformanceComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['principal']}
   },
   {
     path:'hod/student_performance',
     component:StudentPerformanceComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['hod']}
   },
   {
     path:'faculty/student_performance',
     component:StudentPerformanceComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['faculty']}
   },
   {
     path:'accountant/generate_payslip',
-    component:PayslipComponent
+    component:PayslipComponent,
+    canActivate:[AuthGuard],
+    data:{role:['accountant']}
   },
   {
     path:'hod/student_mark',
     component:StudentMarkComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['hod']}
   },
   {
     path:'faculty/student_attandance',
     component:StudentAttndcComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['faculty']}
   },
   {
     path:'hod/student_attandance',
     component:StudentAttndcComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['hod']}
   },
   {
     path:'admin/employee_salary',
     component:EmpSalaryComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['admin']}
   },
   {
     path:'faculty/assignment',
     component:AssignmentComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['faculty']}
   },{
     path:'faculty/library',
     component:LibraryComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data:{role:['faculty']}
+  },{
+    path:'principal/assignment',
+    component:AssignmentComponent,
+    canActivate:[AuthGuard],
+    data:{role:['principal']}
+  },{
+    path:'principal/library',
+    component:LibraryComponent,
+    canActivate:[AuthGuard],
+    data:{role:['principal']}
+  },{
+    path:'principal/student_attandance',
+    component:StudentAttndcComponent,
+    canActivate:[AuthGuard],
+    data:{role:['principal']}
+  },{
+    path:'principal/student_mark',
+    component:StudentMarkComponent,
+    canActivate:[AuthGuard],
+    data:{role:['principal']}
   }
 
 ];

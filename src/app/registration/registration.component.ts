@@ -21,7 +21,7 @@ export class RegistrationComponent implements OnInit {
       .subscribe(
         res => {
           alert("New user Created Successfully...!!!");
-          this._router.navigate(['/login']);
+          this._router.navigate(['admin/students']);
 
         },err => {
           alert("user is Already there...!!!");

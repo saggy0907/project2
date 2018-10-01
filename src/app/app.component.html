@@ -6,51 +6,60 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
   <ul class="navbar-nav mr-auto">
-    <li class="nav-item active" *ngIf="_authService.roleMatch(['admin','hod','faculty','principal','accountant'])">
-      <a class="nav-link" routerLink="{{_authService.getUserName()}}/students" routerLinkActive="active">Students <span class="sr-only">(current)</span></a>
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['admin','hod','faculty','principal','accountant'])">
+      <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/students" routerLinkActive="active">Students <span class="sr-only">(current)</span></a>
     </li>
-    <li class="nav-item active" *ngIf="_authService.roleMatch(['admin','hod','principal','accountant'])">
-      <a class="nav-link" routerLink="{{_authService.getUserName()}}/faculty" routerLinkActive="active">Faculty</a>
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['admin','hod','principal','accountant'])">
+      <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/faculty" routerLinkActive="active">Faculty</a>
     </li>
-    <li class="nav-item active" *ngIf="_authService.roleMatch(['admin','principal'])">
-      <a class="nav-link" routerLink="{{_authService.getUserName()}}/hod" routerLinkActive="active">HOD</a>
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['admin','principal'])">
+      <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/hod" routerLinkActive="active">HOD</a>
     </li>
-    <li class="nav-item active" *ngIf="_authService.roleMatch(['admin'])">
-      <a class="nav-link" routerLink="{{_authService.getUserName()}}/student_fee" routerLinkActive="active">Student Fee</a>
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['admin'])">
+      <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/student_fee" routerLinkActive="active">Student Fee</a>
     </li>
-    <li class="nav-item active" *ngIf="_authService.roleMatch(['admin'])">
-      <a class="nav-link" routerLink="{{_authService.getUserName()}}/employee_salary" routerLinkActive="active">Employee Salary</a>
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['admin'])">
+      <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/employee_salary" routerLinkActive="active">Employee Salary</a>
+    </li>
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['admin'])">
+     <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/add_user" routerLinkActive="active">Add User</a>
+   </li>
+
+
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['faculty'])">
+      <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/assignment" routerLinkActive="active">Assignment</a>
+    </li>
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['faculty'])">
+      <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/library" routerLinkActive="active">Library</a>
     </li>
 
-    <li class="nav-item active" *ngIf="_authService.roleMatch(['faculty'])">
-      <a class="nav-link" routerLink="{{_authService.getUserName()}}/assignment" routerLinkActive="active">Assignment</a>
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['hod','faculty'])">
+      <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/student_attandance" routerLinkActive="active">Attandance</a>
     </li>
-    <li class="nav-item active" *ngIf="_authService.roleMatch(['faculty'])">
-      <a class="nav-link" routerLink="{{_authService.getUserName()}}/library" routerLinkActive="active">Library</a>
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['hod'])">
+      <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/student_mark" routerLinkActive="active">Marks</a>
     </li>
-
-    <li class="nav-item active" *ngIf="_authService.roleMatch(['hod','faculty'])">
-      <a class="nav-link" routerLink="{{_authService.getUserName()}}/student_attandance" routerLinkActive="active">Attandance</a>
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['accountant'])">
+      <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/generate_payslip"  routerLinkActive="active">PaySlip</a>
     </li>
-    <li class="nav-item active" *ngIf="_authService.roleMatch(['hod'])">
-      <a class="nav-link" routerLink="{{_authService.getUserName()}}/student_mark" routerLinkActive="active">Marks</a>
+    <li class="nav-item active" *ngIf="_authService.logedIn() && _authService.roleMatch(['accountant'])">
+      <a class="nav-link" routerLink="{{_authService.getUserName1() || _authService.getUserName2() || _authService.getUserName3() || _authService.getUserName4() || _authService.getUserName5()}}/create_invoice"  routerLinkActive="active">Invoice</a>
     </li>
-    <li class="nav-item active" *ngIf="_authService.roleMatch(['accountant'])">
-      <a class="nav-link" routerLink="{{_authService.getUserName()}}/generate_payslip"  routerLinkActive="active">PaySlip</a>
+    <!-- <ng-template #disableInvoice>
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="{{_authService.getUserName()}}/create_invoice"  routerLinkActive="active">INVOICE</a>
     </li>
-    <li class="nav-item active" *ngIf="_authService.roleMatch(['accountant'])">
-      <a class="nav-link" routerLink="{{_authService.getUserName()}}/create_invoice"  routerLinkActive="active">Invoice</a>
-    </li>
+  </ng-template> -->
   </ul>
   <ul class="navbar-nav">
-      <a class="nav-link" routerLink="/registration" *ngIf="!_authService.logedIn()" routerLinkActive="active">Register </a>
-      <a class="nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!_authService.logedIn()">Login </a>
-      <a class="nav-link" (click)="_authService.logOutUser()"  routerLinkActive="active" *ngIf="_authService.logedIn()">Log Out <span style="color:#00ff53">{{_authService.getUserName()}}</span></a>
+      <!-- <a class="nav-link" routerLink="/registration" *ngIf="!_authService.logedIn()" routerLinkActive="active">Register </a>
+      <a class="nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!_authService.logedIn()">Login </a> -->
+      <a class="nav-link" (click)="_authService.logOutUser()" routerLinkActive="active" *ngIf="_authService.logedIn()">Log Out <span style="color:#00ff53">{{_authService.getRole()}}</span></a>
   </ul>
 
 </div>
 </nav>
 <div class="">
-  <p>hello {{loged.loginData.role}}</p>
+  <p>hello </p>
 </div>
 <router-outlet></router-outlet>

@@ -27,14 +27,11 @@ export class LoginComponent implements OnInit {
       alert("Login Successfull");
       console.log("token =",res.token);
       if(this._auth.getUserName()=="admin"){
-      this.router.navigate(['admin/students']);
-    }if(this._auth.getUserName()=="hod"){
-      this.router.navigate(['hod/students']);
-    }if(this._auth.getUserName()=="faculty"){
-      this.router.navigate(['faculty/students']);
-    }if(this._auth.getUserName()=="accountant"){
-      this.router.navigate(['accountant/students']);
-    }if(this._auth.getUserName()=="principal"){
+        console.log("login as admin")
+        this.router.navigate(['admin/students']);
+      }
+if(res.role[0]=="principal"){
+  console.log("login as principal")
       this.router.navigate(['principal/students']);
     }
     }, err=>{

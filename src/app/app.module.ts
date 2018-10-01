@@ -11,6 +11,7 @@ import { StudentsComponent } from './students/students.component';
 import { RegistrationService } from './registration.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { AuthGuard } from './auth.guard';
+import { Auth2Guard } from './auth2.guard';
 import { FacultyComponent } from './faculty/faculty.component';
 import { HodComponent } from './hod/hod.component';
 import { StudentAttndcComponent } from './student-attndc/student-attndc.component';
@@ -52,7 +53,7 @@ import { AssignmentComponent } from './assignment/assignment.component';
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [RegistrationService,AuthGuard,LoginComponent,
+  providers: [RegistrationService,AuthGuard,LoginComponent,Auth2Guard,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,
